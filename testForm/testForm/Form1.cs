@@ -27,6 +27,10 @@ namespace testForm
         {
             var fileContent = string.Empty;
             var filePath = string.Empty;
+            float Latitude = 0;
+            float Longitude = 0;
+
+
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = "c:\\";
@@ -52,7 +56,22 @@ namespace testForm
             {
                 foreach (var tag in directory.Tags)
                     if(tag.Name == "GPS Latitude" || tag.Name == "GPS Longitude")
-                     textBox2.AppendText($"[{directory.Name}] {tag.Name} = {tag.Description}\n");
+                    {
+                        if (tag.Name == "GPS Latitude")
+                        {
+                            Latitude = StoF(tag.Description);
+                            textBox2.AppendText($"[{directory.Name}] {tag.Name} = " + Latitude + "\n");
+
+                        }
+                        else
+                        {
+                            Longitude = StoF(tag.Description);
+                            textBox2.AppendText($"[{directory.Name}] {tag.Name} = " + Longitude + "\n");
+
+                        }
+
+
+                    }
 
                 if (directory.HasError)
                 {
@@ -61,6 +80,33 @@ namespace testForm
                 }
             }
 
+
+
+
+        }
+
+        private float StoF(string L) // 도분초 -> float 으로 변환
+        {
+            char d = '°';
+            char b = '\'';
+            char c = '\"';
+
+            float r = 0;
+
+            string[] spstring = L.Split(d, b, c);
+           
+            for(int i =0; i<3; i++)
+            {
+                if (i == 0)
+                    r += float.Parse(spstring[i]);
+                else if (i == 1)
+                    r += float.Parse(spstring[i]) / 60.0f;
+                else
+                    r += float.Parse(spstring[i]) / 3600.0f;
+            }
+
+
+            return r;
         }
     }
 }
