@@ -35,6 +35,7 @@ namespace testForm
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.adjBtn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.SuspendLayout();
             // 
             // textBox1
@@ -52,6 +53,7 @@ namespace testForm
             this.upBtn.TabIndex = 1;
             this.upBtn.Text = "업로드";
             this.upBtn.UseVisualStyleBackColor = true;
+            this.upBtn.Click += new System.EventHandler(this.upBtn_Click);
             // 
             // label1
             // 
@@ -80,6 +82,7 @@ namespace testForm
             this.adjBtn.TabIndex = 4;
             this.adjBtn.Text = "위치 조정";
             this.adjBtn.UseVisualStyleBackColor = true;
+            this.adjBtn.Click += new System.EventHandler(this.adjBtn_Click);
             // 
             // button1
             // 
@@ -91,11 +94,20 @@ namespace testForm
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Location = new System.Drawing.Point(12, 186);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(704, 347);
+            this.webBrowser1.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(893, 474);
+            this.ClientSize = new System.Drawing.Size(880, 545);
+            this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.adjBtn);
             this.Controls.Add(this.textBox2);
@@ -117,6 +129,7 @@ namespace testForm
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button adjBtn;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.WebBrowser webBrowser1;
     }
 }
 
